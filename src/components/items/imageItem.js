@@ -6,10 +6,19 @@ class ImageItem extends Component {
     }
 
     render() {
-        const src = "http://192.168.1.8:5000/" + this.props.item.static_path
+        const src = "http://192.168.1.10:5000/" + this.props.item.static_path
         return (
-            <img src={src} id={this.props.item.global_path}
-                 key={"imageItem_" + this.props.i} alt={"wish you could see this, right -_-"}/>
+            <button onClick={async event => await this.movieTime(event)} className="pure-button buttonImageItem">
+                <div class="divImageItem">
+                    <div class="itemIcon">
+                        <img src={src} id={this.props.item.global_path}
+                             key={"imageItem_" + this.props.i} alt={"wish you could see this, right -_-"}/>
+                    </div>
+                    <div class="itemFooter">
+                        <a id={this.props.item.global_path}>{this.props.item.filename}</a>
+                    </div>
+                </div>
+            </button>
         );
     }
 }

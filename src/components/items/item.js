@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {fetcher} from "../fetcher";
 
 class Item extends Component {
     constructor(props) {
@@ -7,14 +8,21 @@ class Item extends Component {
     }
 
     render() {
-        const filePath = "http://192.168.1.8:5000/" + this.props.item.static_path
+        const filePath = "http://192.168.1.10:5000/" + this.props.item.static_path
+        const itemIcon = "http://192.168.1.10:3000/itemIcons/word.svg"
         return (
-            <li key={"item_" + this.props.i} onClick={async event => {
-                await this.props.changePath(event)
-            }}>
-                <a id={this.props.item.global_path}
-                   href={filePath}>{this.props.item.filename}</a>
-            </li>
+            <form action={filePath} class="formItem">
+                <button type="submit" class="pure-button buttonItem">
+                    <div key={"item_" + this.props.i} class="divItem">
+                        <div class="itemIcon">
+                            <img src={itemIcon}/>
+                        </div>
+                        <div class="itemFooter">
+                            <a id={this.props.item.global_path}>{this.props.item.filename}</a>
+                        </div>
+                    </div>
+                </button>
+            </form>
         )
     }
 }

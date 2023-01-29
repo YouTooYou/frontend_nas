@@ -8,9 +8,10 @@ class VideoDetail extends Component {
     }
 
     render() {
+        const videoPath = "http://192.168.1.10:5000/" + this.props.item.static_path
         return (
             <div>
-
+                <h1>EYOO</h1>
             </div>
         );
     }

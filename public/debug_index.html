@@ -1,0 +1,31 @@
+ 
+                    <div class="overviewContainer"> //flex
+                        <div>
+                            <a id="back" onClick={async event => await this.changePath(event)}>..</a>
+                        </div>
+
+                        // Directory
+                        <div id={itemId} key="dirItem_1"  class="dirItem">
+                            <div id={itemId} class="dirItemIcon">
+                                <img id={itemId} src={itemIcon} alt="just look bro "/>
+                            </div>
+                            <div id={itemId} class="dirItemFooter">
+                                {/*TODO add typography of hoe tf da ook heet */}
+                                <a id={itemId}>{this.props.item.filename}</a>
+                            </div>
+                        </div>
+
+                        // file
+                        <a href={filePath}>
+                            <div key="item_1" onClick={async event => {
+                                await this.props.changePath(event)
+                            }} class="item">
+                                <div class="itemIcon">
+                                    <img src={itemIcon}/>
+                                </div>
+                                <div class="itemFooter">
+                                    <a id={this.props.item.global_path}>{this.props.item.filename}</a>
+                                </div>
+                            </div>
+                        </a>
+                    </div>

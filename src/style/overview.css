@@ -1,3 +1,54 @@
+body {
+  background-color: #E6E6E6;
+}
 
+.overviewContainer {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+.overviewContainer .formItem .buttonItem {
+  width: 20vw;
+}
+.overviewContainer .formItem .buttonItem .divItem .itemIcon img {
+  width: 10vw;
+}
+.overviewContainer .buttonBackItem {
+  width: 20vw;
+}
+.overviewContainer .buttonBackItem .divBackItem .backItemIcon img {
+  width: 10vw;
+}
+.overviewContainer .clickDivItem .buttonDirItem {
+  width: 20vw;
+}
+.overviewContainer .clickDivItem .buttonDirItem .divDirItem .dirItemIcon img {
+  width: 10vw;
+}
+.overviewContainer .buttonVideoItem {
+  width: 20vw;
+}
+.overviewContainer .buttonVideoItem .divVideoItem {
+  margin-top: auto;
+  margin-bottom: auto;
+  min-height: 100%;
+}
+.overviewContainer .buttonVideoItem .divVideoItem .videoItemIcon img {
+  width: 10vw;
+}
+.overviewContainer .buttonImageItem {
+  width: 20vw;
+}
+.overviewContainer .buttonImageItem .divImageItem {
+  margin-top: auto;
+  margin-bottom: auto;
+  min-height: 100%;
+}
+.overviewContainer .buttonImageItem .divImageItem .itemIcon img {
+  width: 10vw;
+}
 
 /*# sourceMappingURL=overview.css.map */

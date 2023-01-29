@@ -1,1 +1,148 @@
 // TODO     make it look FUCKING pretty :)
+body {
+    background-color: #E6E6E6;
+}
+
+.overviewContainer {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    text-align: center;
+    //align-items: stretch;
+    margin-left: auto;
+    margin-right: auto;
+
+
+    // Item CSS; copy of div { ... since there is an a element with filePath href
+    .formItem {
+        // TODO Put in function so you don't need to write it twice
+        .buttonItem {
+            width: 20vw;
+
+            .divItem {
+
+                .itemIcon {
+
+                    img {
+                        width: 10vw;
+                    }
+                }
+
+                .itemFooter {
+
+                    a {
+
+                    }
+                }
+            }
+        }
+    }
+
+
+    // Back Item
+    .buttonBackItem {
+        width: 20vw;
+
+        .divBackItem {
+
+            .backItemIcon {
+
+                img {
+                    width: 10vw;
+                }
+            }
+
+            .backItemFooter {
+
+                a {
+
+                }
+            }
+        }
+    }
+
+
+    // Directory
+    .clickDivItem {
+        //margin-top: auto;
+        //margin-bottom: auto;
+
+        .buttonDirItem {
+            width: 20vw;
+            //min-height: 100%;
+
+            .divDirItem {
+                .dirItemIcon {
+
+                    img {
+                        width: 10vw;
+                    }
+                }
+
+                .dirItemFooter {
+
+                    a {
+
+                    }
+                }
+            }
+        }
+    }
+
+
+    // Video Item
+    .buttonVideoItem {
+        width: 20vw;
+
+        .divVideoItem {
+            margin-top: auto;
+            margin-bottom: auto;
+            min-height: 100%;
+
+
+            .videoItemIcon {
+
+                img {
+                    width: 10vw;
+                }
+            }
+
+            .videoItemFooter {
+
+                a {
+
+                }
+            }
+        }
+    }
+
+    // Image Item
+    .buttonImageItem {
+        width: 20vw;
+
+        .divImageItem {
+            margin-top: auto;
+            margin-bottom: auto;
+            min-height: 100%;
+
+
+            .itemIcon {
+
+                img {
+                    width: 10vw;
+                }
+            }
+
+            .itemFooter {
+
+                a {
+
+                }
+            }
+        }
+    }
+
+
+
+}
+

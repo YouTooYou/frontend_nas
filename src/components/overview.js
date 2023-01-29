@@ -1,3 +1,5 @@
+import "../style/overview.css"
+
 import React, {Component} from 'react';
 import {fetcher} from "./fetcher";
 import ImageItem from "./items/imageItem";
@@ -19,7 +21,7 @@ class Overview extends Component {
         console.log(this.state.items)
         console.log("\tthis.state.images:")
         console.log(this.state.images)
-        await this.updateCache()
+        // await this.updateCache()
         this.forceUpdate()
         this.render()
         console.log("")
@@ -33,6 +35,7 @@ class Overview extends Component {
             // isLoaded: false,
             path: event.target.id,
         })
+        console.log(event)
         await this.walk(event.target.id);
         this.forceUpdate()
         this.render()
@@ -48,20 +51,35 @@ class Overview extends Component {
             if ('caches' in window) {
                 // Opening given cache and putting our data into it
                 let cache = await caches.open(this.state.items[i].global_name)
-                await cache.put("http://localhost:3000", data);
+                await cache.put("http://192.168.1.10:3000", data);
             }
         }
 
         for (let i = 0; i < this.state.items.length; i++) {
-            Cache().put(this.state.items[i].global_name, )
+            Cache().put(this.state.items[i].global_name,)
         }
-        console.log(caches.open("http://localhost:3001"))
+        console.log(caches.open("http://192.168.1.10:3000"))
     }
+
+    // Function to add our give data into cache
+    async addDataIntoCache(cacheName, url, response) {
+        // Converting our response into Actual Response form
+        const data = new Response(JSON.stringify(response));
+
+        if ('caches' in window) {
+            // Opening given cache and putting our data into it
+            caches.open(cacheName).then((cache) => {
+                cache.put(url, data);
+                // alert('Data Added into cache!')
+            });
+        }
+    };
 
     async walk(path) {
         await fetcher("POST", "/",
             {path: path}
         ).then(response => response.json()).then(items => {
+            // this.addDataIntoCache("items", "http://")
             this.setState({
                 isLoaded: true,
                 items: items,
@@ -80,22 +98,32 @@ class Overview extends Component {
         } else {
             return (
                 <>
-                    <ul onClick={async event => await this.changePath(event)}>
-                        <li>
-                            <a id="back">..</a>
-                        </li>
-                    </ul>
-                    <ul>
+                    <div class="overviewContainer">
+                        <button id={"back"} className="pure-button buttonBackItem"
+                                onClick={async event => {
+                                    await this.changePath(event)
+                                }}>
+                            <div id={"back"} key={"item_back"} className="divBackItem">
+                                <div id={"back"} className="backItemIcon">
+                                    <img id={"back"}
+                                         src={"http://192.168.1.10:3000/itemIcons/back.png"}
+                                         alt={"GTFO with that alt bs"}/>
+                                </div>
+                                <div id={"back"} className="backItemFooter">
+                                    <a id={"back"}>{"Back"}</a>
+                                </div>
+                            </div>
+                        </button>
                         {
                             items.map((item, i) => {
                                 if (item.is_img) {
-                                    // return <img src={"http://192.168.1.8:5000/" + item.static_path}
+                                    // return <img src={"http://192.168.1.10:5000/" + item.static_path}
                                     //             id={item.global_path}
                                     //             key={i}/>
                                     return <ImageItem item={item} i={i}/>
                                 } else if (item.is_video) {
                                     // console.log(videoPath)
-                                    // return <ReactPlayer url={"http://192.168.1.8:5000/" + item.static_path} key={i}/>
+                                    // return <ReactPlayer url={"http://192.168.1.10:5000/" + item.static_path} key={i}/>
                                     return (
                                         // <video controls>
                                         //     <source src={videoPath} type="video/mp4" />
@@ -125,7 +153,7 @@ class Overview extends Component {
                                         // }}>
                                         //     <a id={ item.global_path } >{item.filename}</a>
                                         // </li>
-                                        <div key={"divItem_" + i}
+                                        <div key={"divItem_" + i} class="clickDivItem"
                                              onClick={async event => await this.changePath(event)}>
                                             <DirItem item={item} i={i}/>
                                         </div>
@@ -133,7 +161,7 @@ class Overview extends Component {
                                 }
                             })
                         }
-                    </ul>
+                    </div>
                 </>
             );
         }

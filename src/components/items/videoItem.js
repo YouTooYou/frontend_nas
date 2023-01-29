@@ -1,27 +1,38 @@
 import React, {Component} from 'react';
+import {withRouter} from "../navigate"
 
 class VideoItem extends Component {
     constructor(props) {
         super(props);
+        this.movieTime = this.movieTime.bind(this)
+    }
+
+    movieTime() {
+        // SOURCE: https://stackoverflow.com/questions/70143135/how-to-use-react-router-dom-v6-navigate-in-class-component
+        this.props.navigate("/yo")
     }
 
 
+
     render() {
-        const videoPath = "http://192.168.1.8:5000/" + this.props.item.static_path
+        const itemIcon = "http://192.168.1.10:3000/itemIcons/video.svg"
+        const itemId = this.props.item.global_path
         return (
-            <video controls key={"videoItem_" + this.props.i}>
-                <source src={videoPath} type="video/mp4"/>
-                <source src={videoPath} type="video/mkv"/>
 
-                <source src={videoPath} type="video/webm"/>
-                <source src={videoPath}
-                        type='video/x-matroska; codecs="theora, vorbis"'/>
-                <source src={videoPath} type='video/x-matroska'/>
+            <button onClick={this.movieTime} className="pure-button buttonVideoItem">
+                <div id={itemId} key={"videoItem_" + this.props.i} className="divVideoItem">
+                    <div id={itemId} className="videoItemIcon">
+                        <img id={itemId} src={itemIcon} alt={"just look bro "}/>
+                    </div>
+                    <div id={itemId} className="videoItemFooter">
+                        {/*TODO add typography of hoe tf da ook heet */}
+                        <a id={itemId}>{this.props.item.filename}</a>
+                    </div>
+                </div>
+            </button>
 
-                <a href={videoPath}>download video</a>
-            </video>
         );
     }
 }
 
-export default VideoItem;
+export default withRouter(VideoItem);
