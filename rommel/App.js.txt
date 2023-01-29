@@ -1,0 +1,182 @@
+
+
+    // async componentDidMount() {
+    //     console.log("IN COMPONENT DID MOUNT: ====================================================================")
+    //     await this.walk("/");
+    //     console.log("before get_image_urls:")
+    //     console.log("\tthis.state.items:")
+    //     console.log(this.state.items)
+    //     console.log("\tthis.state.images:")
+    //     console.log(this.state.images)
+    //     this.forceUpdate()
+    //     this.render()
+    //     console.log("")
+    //     console.log("")
+    //     console.log("")
+    //     console.log("")
+    // }
+    //
+    // async changePath(event) {
+    //     this.setState({
+    //         // isLoaded: false,
+    //         path: event.target.id,
+    //     })
+    //     await this.walk(event.target.id);
+    //     this.forceUpdate()
+    //     this.render()
+    // }
+    // async walk(path) {
+    //     await fetcher("POST", "/",
+    //         {path: path}
+    //     ).then(response => response.json()).then(items => {
+    //         console.log("items in walk:")
+    //         console.log(items)
+    //         this.setState({
+    //             isLoaded: true,
+    //             items: items,
+    //             path: path,
+    //         })
+    //     })
+    // }
+    //
+    //
+    //
+    //
+    // render() {
+    //
+    //     let {isLoaded, items, path} = this.state
+    //
+    //     if (!isLoaded) {
+    //         return <div>Loading...</div>
+    //     } else {
+    //         return (
+    //             <>
+    //                 <ul onClick={async event => await this.changePath(event)}>
+    //                     <li>
+    //                         <a id="back" >..</a>
+    //                     </li>
+    //                 </ul>
+    //                 <ul >
+    //                     {
+    //                         items.map((item, i) => {
+    //                             if (item.is_img) {
+    //                                 // return <img src={"http://192.168.1.8:5000/" + item.static_path}
+    //                                 //             id={item.global_path}
+    //                                 //             key={i}/>
+    //                                 return <ImageItem item={item} i={i}/>
+    //                             } else if(item.is_video) {
+    //                                 // console.log(videoPath)
+    //                                 // return <ReactPlayer url={"http://192.168.1.8:5000/" + item.static_path} key={i}/>
+    //                                 return (
+    //                                     // <video controls>
+    //                                     //     <source src={videoPath} type="video/mp4" />
+    //                                     //     <source src={videoPath} type="video/mkv" />
+    //                                     //
+    //                                     //     <source src={videoPath} type="video/webm" />
+    //                                     //     <source src={videoPath} type='video/x-matroska; codecs="theora, vorbis"' />
+    //                                     //     <source src={videoPath} type='video/x-matroska' />
+    //                                     //
+    //                                     //     <a href={videoPath}>download video</a>
+    //                                     // </video>
+    //                                     <VideoItem item={item} i={i}/>
+    //                                 )
+    //                             } else if(!item.is_dir) {
+    //                                 return (
+    //                                         // <li key={i} onClick={async event => {
+    //                                         //     await this.changePath(event)
+    //                                         // }}>
+    //                                         //     <a id={ item.global_path } href={filePath} >{item.filename}</a>
+    //                                         // </li>
+    //                                         <Item item={item} i={i}/>
+    //                                     )
+    //                             }
+    //                             else {
+    //                                 return (
+    //                                         // <li key={i} onClick={async event => {
+    //                                         //     await this.changePath(event)
+    //                                         // }}>
+    //                                         //     <a id={ item.global_path } >{item.filename}</a>
+    //                                         // </li>
+    //                                     <a key={"divItem_" + i} onClick={async event => await this.changePath(event)}>
+    //                                         <DirItem item={item} i={i}/>
+    //                                     </a>
+    //                                     )
+    //                             }
+    //                         })
+    //                     }
+    //                 </ul>
+    //             </>
+    //         );
+    //     }
+    // }
+
+
+
+    // ================================================================================================================================
+
+
+
+
+
+
+
+
+
+
+
+
+
+    //
+    // async get_image_urls() {
+    //     console.log("in get_image_urls:")
+    //     for (let i = 0; i < this.state.items.length; i++) {
+    //         // console.log(this.state.items)
+    //         // console.log("this.state.items[i]")
+    //         console.log(this.state.items[i])
+    //         if (this.state.items[i].is_img) {
+    //             console.log(this.state.items[i])
+    //             await fetcher("POST", "/",
+    //                 {path: this.state.path}
+    //             ).then(response => response.blob()).then(blob => {
+    //                 const objectURL = URL.createObjectURL(blob)
+    //                 // console.log(objectURL)
+    //                 const image = {
+    //                     "global_path": this.state.items[i].global_path,
+    //                     "static_path": this.state.items[i].static,
+    //                     "src": "http://192.168.1.8:5000/" + this.state.items[i].static_path
+    //                 }
+    //                 console.log(image)
+    //                 this.state.images.push(image)
+    //                 this.setState({
+    //                     // isLoaded: this.state.isLoaded,
+    //                     // items: this.state.items,
+    //                     images: [...this.state.images, image],
+    //                     // path: this.state.path,
+    //                 })
+    //             })
+    //         }
+    //     }
+    // }
+    //
+    // async get_image_url(item, i) {
+    //     await fetcher("POST", "/get_item",
+    //         {path: item.global_path}
+    //     ).then(response => response.blob()).then(blob => {
+    //         const objectURL = URL.createObjectURL(blob)
+    //         console.log(objectURL)
+    //
+    //         // Copy items and add image field to necessary items; maybe this works :/
+    //         let copy_items = this.state.items.slice()
+    //         for (let i = 0; i < copy_items.length; i++) {
+    //             if (copy_items[i].global_path === item.global_path) {
+    //                 copy_items.image =
+    //                     <img id={item.global_path} src={objectURL} key={i}/>
+    //             }
+    //         }
+    //
+    //         this.setState({
+    //             isLoaded: true,
+    //             items: copy_items,
+    //         })
+    //     })
+    // }
