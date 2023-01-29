@@ -48,7 +48,7 @@ class Overview extends Component {
             if ('caches' in window) {
                 // Opening given cache and putting our data into it
                 let cache = await caches.open(this.state.items[i].global_name)
-                await cache.put("http://localhost:3001", data);
+                await cache.put("http://localhost:3000", data);
             }
         }
 

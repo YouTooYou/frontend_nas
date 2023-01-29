@@ -14,6 +14,7 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
+    "prestart": "sass --watch src/style/overview.scss:src/style/overview.css &",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
