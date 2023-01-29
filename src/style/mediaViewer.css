@@ -1,0 +1,29 @@
+.detailContainer {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+.detailContainer .videoItem {
+  margin-top: 3vw;
+  width: 75vw;
+}
+.detailContainer img {
+  margin-top: 3vw;
+  width: 35vw;
+}
+
+.detail_buttonBackItem {
+  width: fit-content;
+  float: left;
+}
+.detail_buttonBackItem .divBackItem .backItemIcon img {
+  width: 9em;
+}
+.detail_buttonBackItem .divBackItem .backItemFooter {
+  display: none;
+}
+
+/*# sourceMappingURL=mediaViewer.css.map */

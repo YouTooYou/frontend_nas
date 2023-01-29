@@ -9,10 +9,12 @@ import VideoDetail from "./components/videoDetail";
 import {BrowserRouter as Router, Routes, Route, Link} from 'react-router-dom';
 // import {fetcher} from "./components/fetcher";
 import React, {Component/*, useLayoutEffect*/} from 'react';
+import MediaViewer from "./components/MediaViewer";
 
 // import ReactPlayer from "react-player/lazy";
 
-
+// TODO add redis caching or something, just to make it more complete
+// https://github.com/node-cache-manager/node-cache-manager
 class App extends Component {
     constructor(props) {
         super(props);
@@ -39,7 +41,7 @@ class App extends Component {
             <Router>
                 <Routes>
                     <Route exact path={"/"} element={<Overview state={this.state}/>} > </Route>
-                    <Route exact path={"/yo"} element={<VideoDetail state={this.state} />} > </Route>
+                    <Route exact path={"/item"} element={<MediaViewer />} > </Route>
                 </Routes>
             </Router>
         );

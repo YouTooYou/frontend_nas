@@ -3,24 +3,17 @@ import {withRouter} from "./navigate"
 // https://github.com/ptarjan/node-cache
 let cache = require("memory-cache")
 
-class VideoDetail extends Component {
+class ImageDetail extends Component {
     constructor(props) {
         super(props);
         this.state = this.props.state
-        console.log("this.state -> in VideoDetail:")
+        console.log("this.state -> in ImageDetail:")
         console.log(this.state)
     }
 
-    async changePath(event) {
-        // this.setState({
-        //     // isLoaded: false,
-        //     path: event.target.id,
-        // })
-        // // console.log(event)
-        // await this.walk(event.target.id);
-        // this.forceUpdate()
-        // this.render()
 
+
+    async changePath(event) {
         // Just refreshing the cache, cause why not \_(o-o)_/
         // cache.put("state", this.state)
 
@@ -28,7 +21,7 @@ class VideoDetail extends Component {
     }
 
     render() {
-        const videoPath = "http://192.168.1.8:5000/" + this.state.activeItem.static_path
+        const imagePath = "http://192.168.1.8:5000/" + this.state.activeItem.static_path
         return (
             <>
                 <button id={"back"} className="pure-button detail_buttonBackItem "
@@ -47,16 +40,11 @@ class VideoDetail extends Component {
                     </div>
                 </button>
                 <div className="detailContainer">
-
-                    <video class="videoItem" controls>
-                        <source src={videoPath} type="video/mp4"/>
-                        <source src={videoPath} type="video/webm"/>
-                        Your browser does not support the video tag
-                    </video>
+                    <img src={imagePath} alt={"FUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUCK"}/>
                 </div>
             </>
         );
     }
 }
 
-export default withRouter(VideoDetail);
+export default withRouter(ImageDetail);

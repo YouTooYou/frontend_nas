@@ -1,0 +1,34 @@
+.mediaScroller {
+  width: 100vw;
+  overflow: auto;
+  display: flex;
+  flex-wrap: nowrap;
+  position: absolute;
+  bottom: 0;
+}
+.mediaScroller .buttonImageItem {
+  width: 18vw;
+}
+.mediaScroller .buttonImageItem .divImageItem {
+  margin-top: auto;
+  margin-bottom: auto;
+}
+.mediaScroller .buttonImageItem .divImageItem .itemIcon img {
+  width: 8vw;
+}
+.mediaScroller .buttonVideoItem:hover {
+  background-color: transparent;
+}
+.mediaScroller .buttonVideoItem {
+  background-color: transparent;
+  width: 18vw;
+}
+.mediaScroller .buttonVideoItem .divVideoItem {
+  margin-top: auto;
+  margin-bottom: auto;
+}
+.mediaScroller .buttonVideoItem .divVideoItem .videoItemIcon img {
+  width: 6vw;
+}
+
+/*# sourceMappingURL=mediaScroller.css.map */

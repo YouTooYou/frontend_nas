@@ -6,36 +6,49 @@ import ImageItem from "./items/imageItem";
 import VideoItem from "./items/videoItem";
 import Item from "./items/item";
 import DirItem from "./items/dirItem";
+// https://github.com/ptarjan/node-cache
+let cache = require("memory-cache")
 
 class Overview extends Component {
     constructor(props) {
         super(props);
-        this.state = props.state
+        const cache_state = cache.get("state")
+        console.log("cache_state:")
+        console.log(cache_state)
+        console.log("props.state:")
+        console.log(props.state)
+        this.state = Object.assign({}, props.state, cache_state || {})
+
     }
 
     async componentDidMount() {
-        console.log("IN COMPONENT DID MOUNT: ====================================================================")
-        await this.walk("/");
-        console.log("before get_image_urls:")
-        console.log("\tthis.state.items:")
-        console.log(this.state.items)
-        console.log("\tthis.state.images:")
-        console.log(this.state.images)
+        // const path = cache.get("path") ? cache.get("path"): "/"
+        const path = this.state.path || "/"
+        console.log()
+        // console.log("IN COMPONENT DID MOUNT: ====================================================================")
+        await this.walk(path);
+        // console.log("before get_image_urls:")
+        // console.log("\tthis.state.items:")
+        // console.log(this.state.items)
+        // console.log("\tthis.state.images:")
+        // console.log(this.state.images)
         // await this.updateCache()
         this.forceUpdate()
-        this.render()
-        console.log("")
-        console.log("")
-        console.log("")
-        console.log("")
+        // this.render()
+        // console.log("")
+        // console.log("")
+        // console.log("")
+        // console.log("")
     }
 
     async changePath(event) {
-        this.setState({
-            // isLoaded: false,
-            path: event.target.id,
-        })
-        console.log(event)
+        if(event.target.id !== "back") {
+            this.setState({
+                // isLoaded: false,
+                path: this.state.path.split(),
+            })
+        }
+        // console.log(event)
         await this.walk(event.target.id);
         this.forceUpdate()
         this.render()
@@ -51,29 +64,15 @@ class Overview extends Component {
             if ('caches' in window) {
                 // Opening given cache and putting our data into it
                 let cache = await caches.open(this.state.items[i].global_name)
-                await cache.put("http://192.168.1.10:3000", data);
+                await cache.put("http://192.168.1.8:3000", data);
             }
         }
 
         for (let i = 0; i < this.state.items.length; i++) {
             Cache().put(this.state.items[i].global_name,)
         }
-        console.log(caches.open("http://192.168.1.10:3000"))
+        // console.log(caches.open("http://192.168.1.8:3000"))
     }
-
-    // Function to add our give data into cache
-    async addDataIntoCache(cacheName, url, response) {
-        // Converting our response into Actual Response form
-        const data = new Response(JSON.stringify(response));
-
-        if ('caches' in window) {
-            // Opening given cache and putting our data into it
-            caches.open(cacheName).then((cache) => {
-                cache.put(url, data);
-                // alert('Data Added into cache!')
-            });
-        }
-    };
 
     async walk(path) {
         await fetcher("POST", "/",
@@ -106,7 +105,7 @@ class Overview extends Component {
                             <div id={"back"} key={"item_back"} className="divBackItem">
                                 <div id={"back"} className="backItemIcon">
                                     <img id={"back"}
-                                         src={"http://192.168.1.10:3000/itemIcons/back.png"}
+                                         src={"http://192.168.1.8:3000/itemIcons/back.png"}
                                          alt={"GTFO with that alt bs"}/>
                                 </div>
                                 <div id={"back"} className="backItemFooter">
@@ -117,13 +116,13 @@ class Overview extends Component {
                         {
                             items.map((item, i) => {
                                 if (item.is_img) {
-                                    // return <img src={"http://192.168.1.10:5000/" + item.static_path}
+                                    // return <img src={"http://192.168.1.8:5000/" + item.static_path}
                                     //             id={item.global_path}
                                     //             key={i}/>
-                                    return <ImageItem item={item} i={i}/>
+                                    return <ImageItem state={this.state} item={item} i={i}/>
                                 } else if (item.is_video) {
                                     // console.log(videoPath)
-                                    // return <ReactPlayer url={"http://192.168.1.10:5000/" + item.static_path} key={i}/>
+                                    // return <ReactPlayer url={"http://192.168.1.8:5000/" + item.static_path} key={i}/>
                                     return (
                                         // <video controls>
                                         //     <source src={videoPath} type="video/mp4" />
@@ -135,7 +134,7 @@ class Overview extends Component {
                                         //
                                         //     <a href={videoPath}>download video</a>
                                         // </video>
-                                        <VideoItem item={item} i={i}/>
+                                        <VideoItem state={this.state} item={item} i={i}/>
                                     )
                                 } else if (!item.is_dir) {
                                     return (

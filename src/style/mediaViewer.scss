@@ -1,0 +1,47 @@
+
+.detailContainer {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    text-align: center;
+    //align-items: stretch;
+    margin-left: auto;
+    margin-right: auto;
+
+    .videoItem {
+        margin-top: 3vw;
+        width: 75vw;
+    }
+
+    img {
+        margin-top: 3vw;
+        width: 35vw;
+    }
+}
+
+
+.detail_buttonBackItem {
+    width: fit-content;
+    float: left;
+
+    .divBackItem {
+
+        .backItemIcon {
+
+            img {
+                // TODO je kan normaal met react of met scss of zo een div evengroot maken als een image; die scanned da zo snapje
+                width: 9em;
+            }
+        }
+
+        .backItemFooter {
+            display: none;
+
+            a {
+
+            }
+        }
+    }
+}
+
+

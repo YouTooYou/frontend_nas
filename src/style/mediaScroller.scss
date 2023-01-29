@@ -1,0 +1,67 @@
+.mediaScroller {
+    width: 100vw;
+    overflow: auto;
+    display: flex;
+    flex-wrap: nowrap;
+    position: absolute;
+    bottom: 0;
+
+    // Image Item
+    .buttonImageItem {
+        width: 18vw;
+
+        .divImageItem {
+            margin-top: auto;
+            margin-bottom: auto;
+
+
+            .itemIcon {
+
+                img {
+                    width: 8vw;
+                }
+            }
+
+            .itemFooter {
+
+                a {
+
+                }
+            }
+        }
+    }
+
+
+    // Video Item
+    .buttonVideoItem:hover {
+        background-color: transparent;
+    }
+
+    .buttonVideoItem {
+        background-color: transparent;
+        width: 18vw;
+
+
+        .divVideoItem {
+            margin-top: auto;
+            margin-bottom: auto;
+
+
+            .videoItemIcon {
+
+                img {
+                    width: 6vw;
+                }
+            }
+
+            .videoItemFooter {
+
+                a {
+
+                }
+            }
+        }
+    }
+
+
+}
