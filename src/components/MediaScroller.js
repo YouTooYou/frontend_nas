@@ -17,7 +17,7 @@ class MediaScroller extends Component {
                 {
                     this.state.mediaItems.map((item, i) => {
                         if (item.is_img) {
-                            return <ImageItem state={this.state} item={item} i={i}/>
+                            return <ImageItem mediaViewer={this.props.mediaViewer} state={this.state} item={item} i={i}/>
                         } else if (item.is_video) {
                             return <VideoItem mediaViewer={this.props.mediaViewer} state={this.state} item={item} i={i}/>
                         }

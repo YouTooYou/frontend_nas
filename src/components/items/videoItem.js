@@ -37,7 +37,9 @@ class VideoItem extends Component {
 
         console.log()
         if(window.location.href.endsWith("/item")) {
-            this.render()
+            console.log(this.props.mediaViewer)
+            this.props.mediaViewer.render()
+        //     TODO ZORG ER VOOR DAT DIE HIER REFRESHED VOOR DIE QUICK SELECT
         }
     }
 

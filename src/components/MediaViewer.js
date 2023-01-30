@@ -21,9 +21,9 @@ class MediaViewer extends Component {
         if(activeItem.is_img) {
             console.log("activeItem.is_img")
             console.log(activeItem.is_img)
-            return (<><ImageDetail state={this.state}/> <MediaScroller state={this.state} /></>)
+            return (<><ImageDetail state={this.state}/> <MediaScroller mediaViewer={this} state={this.state} /></>)
         } else if(activeItem.is_video) {
-            return (<><VideoDetail state={this.state}/> <MediaScroller state={this.state} /></>)
+            return (<><VideoDetail state={this.state}/> <MediaScroller mediaViewer={this} state={this.state} /></>)
         } else {
             return (<><h1>I don't know what to tell you chief :'/</h1> <MediaScroller mediaViewer={this} state={this.state} /></>)
         }

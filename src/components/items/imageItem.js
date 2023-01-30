@@ -30,6 +30,8 @@ class ImageItem extends Component {
                 cache.put("state", this.props.state)
                 console.log('cache.get("state")')
                 console.log(cache.get("state"))
+                console.log('cache.get("activeItem")')
+                console.log(cache.get("activeItem"))
             })
 
         // Navigate to route using wrapper method
