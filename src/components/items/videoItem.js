@@ -8,7 +8,7 @@ class VideoItem extends Component {
     constructor(props) {
         super(props);
         this.movieTime = this.movieTime.bind(this)
-        cache.put("items", this.props.state.items)
+        // cache.put("items", this.props.state.items)
         // Possible fix to double prints ???
         // cache.put("items", [])
     }
@@ -24,23 +24,32 @@ class VideoItem extends Component {
         await fetcher("POST", "/media_items", {path: this.props.state.path, "activeItem.global_path": activeItem.global_path}).then(response => response.json())
             .then(mediaItems => {
                 // cache.put("items", items)
+                cache.del("activeItem")
                 cache.put("activeItem", activeItem)
+                // console.log("cache.get('activeItem')")
+                // console.log(cache.get('activeItem'))
+                cache.del("mediaItems")
                 cache.put("mediaItems", mediaItems)
+                // console.log("cache.get('mediaItems')")
+                // console.log(cache.get('mediaItems'))
                 // cache.put("path", this.props.state.path)
+                cache.del("state")
                 cache.put("state", this.props.state)
-                console.log('cache.get("state")')
-                console.log(cache.get("state"))
+                // console.log('cache.get("state")')
+                // console.log(cache.get("state"))
             })
-
-        // Navigate to route using wrapper method
         this.props.navigate("/item")
+
 
         console.log()
         if(window.location.href.endsWith("/item")) {
-            console.log(this.props.mediaViewer)
-            this.props.mediaViewer.render()
-        //     TODO ZORG ER VOOR DAT DIE HIER REFRESHED VOOR DIE QUICK SELECT
+            // Synchronize MediaViewer with simple memory-cache
+            this.props.mediaViewer.setCacheState()
+        } else {
+            // Navigate to route using wrapper method
+            this.props.navigate("/item")
         }
+
     }
 
     render() {

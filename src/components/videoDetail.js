@@ -11,6 +11,28 @@ class VideoDetail extends Component {
         console.log(this.state)
     }
 
+    componentDidMount() {
+        this.setCacheState()
+    }
+
+    setCacheState() {
+        // console.log("VideoDetail setCacheState function:")
+        let cache_state = cache.get("state")
+        const extra_state = {   mediaItems: cache.get("mediaItems"), activeItem: cache.get("activeItem")}
+        let final_state = Object.assign({}, cache_state, extra_state)
+
+        // console.log("cache_state")
+        // console.log(cache_state)
+        // console.log("extra_state")
+        // console.log(extra_state)
+        // console.log("final_state")
+        // console.log(final_state)
+
+        this.setState(final_state)
+
+        // this.render()
+    }
+
     async changePath(event) {
         // this.setState({
         //     // isLoaded: false,
@@ -28,7 +50,16 @@ class VideoDetail extends Component {
     }
 
     render() {
-        const videoPath = "http://192.168.1.8:5000/" + this.state.activeItem.static_path
+
+        // console.log("VideoDetail render:")
+        // console.log("this.state")
+        // console.log(this.state)
+        // console.log("this.props")
+        // console.log(this.props.state.activeItem.static_path)
+
+        const videoPath = "http://192.168.1.8:5000/" + this.props.state.activeItem.static_path
+        // console.log("videoPath")
+        // console.log(videoPath)
         return (
             <>
                 <button id={"back"} className="pure-button detail_buttonBackItem "
@@ -48,9 +79,9 @@ class VideoDetail extends Component {
                 </button>
                 <div className="detailContainer">
 
-                    <video class="videoItem" controls>
-                        <source src={videoPath} type="video/mp4"/>
-                        <source src={videoPath} type="video/webm"/>
+                    <video class="videoItem" src={videoPath} controls>
+                        <source type="video/mp4"/>
+                        <source type="video/webm"/>
                         Your browser does not support the video tag
                     </video>
                 </div>

@@ -16,7 +16,7 @@ class ImageDetail extends Component {
     async changePath(event) {
         // Just refreshing the cache, cause why not \_(o-o)_/
         // cache.put("state", this.state)
-
+        // NVM :"(
         this.props.navigate("/")
     }
 
