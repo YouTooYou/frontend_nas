@@ -60,13 +60,13 @@
     //                     {
     //                         items.map((item, i) => {
     //                             if (item.is_img) {
-    //                                 // return <img src={"http://192.168.1.8:5000/" + item.static_path}
+    //                                 // return <img src={"http://192.168.1.15:5000/" + item.static_path}
     //                                 //             id={item.global_path}
     //                                 //             key={i}/>
     //                                 return <ImageItem item={item} i={i}/>
     //                             } else if(item.is_video) {
     //                                 // console.log(videoPath)
-    //                                 // return <ReactPlayer url={"http://192.168.1.8:5000/" + item.static_path} key={i}/>
+    //                                 // return <ReactPlayer url={"http://192.168.1.15:5000/" + item.static_path} key={i}/>
     //                                 return (
     //                                     // <video controls>
     //                                     //     <source src={videoPath} type="video/mp4" />
@@ -143,7 +143,7 @@
     //                 const image = {
     //                     "global_path": this.state.items[i].global_path,
     //                     "static_path": this.state.items[i].static,
-    //                     "src": "http://192.168.1.8:5000/" + this.state.items[i].static_path
+    //                     "src": "http://192.168.1.15:5000/" + this.state.items[i].static_path
     //                 }
     //                 console.log(image)
     //                 this.state.images.push(image)

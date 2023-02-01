@@ -1,5 +1,5 @@
 
-const URL = "http://192.168.1.8:5000"
+const URL = "http://192.168.1.15:5000"
 export async function fetcher(method, endpoint, body) {
     if(!endpoint.startsWith("/")) {
         endpoint += "/"

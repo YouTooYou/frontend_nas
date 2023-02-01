@@ -6,7 +6,7 @@ class DirItem extends Component {
     }
 
     render() {
-        const itemIcon = "http://192.168.1.8:3000/itemIcons/directory.svg"
+        const itemIcon = "http://192.168.1.15:3000/itemIcons/directory.svg"
         const itemId = this.props.item.global_path
         return (
             <button type="submit" class="pure-button buttonDirItem">
