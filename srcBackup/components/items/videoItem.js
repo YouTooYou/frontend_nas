@@ -7,7 +7,7 @@ class VideoItem extends Component {
 
 
     render() {
-        const videoPath = "http://192.168.1.15:5000/" + this.props.item.static_path
+        const videoPath = "http://192.168.1.12:5000/" + this.props.item.static_path
         return (
             <video controls key={"videoItem_" + this.props.i}>
                 <source src={videoPath} type="video/mp4"/>

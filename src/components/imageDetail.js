@@ -21,7 +21,7 @@ class ImageDetail extends Component {
     }
 
     render() {
-        const imagePath = "http://192.168.1.15:5000/" + this.state.activeItem.static_path
+        const imagePath = "http://192.168.1.12:5000/" + this.state.activeItem.static_path
         return (
             <>
                 <button id={"back"} className="pure-button detail_buttonBackItem "
@@ -31,7 +31,7 @@ class ImageDetail extends Component {
                     <div id={"back"} key={"item_back"} className="divBackItem">
                         <div id={"back"} className="backItemIcon">
                             <img id={"back"}
-                                 src={"http://192.168.1.15:3000/itemIcons/back.png"}
+                                 src={"http://192.168.1.12:3000/itemIcons/back.png"}
                                  alt={"GTFO with that alt bs"}/>
                         </div>
                         <div id={"back"} className="backItemFooter">

@@ -64,14 +64,14 @@ class Overview extends Component {
             if ('caches' in window) {
                 // Opening given cache and putting our data into it
                 let cache = await caches.open(this.state.items[i].global_name)
-                await cache.put("http://192.168.1.15:3000", data);
+                await cache.put("http://192.168.1.12:3000", data);
             }
         }
 
         for (let i = 0; i < this.state.items.length; i++) {
             Cache().put(this.state.items[i].global_name,)
         }
-        // console.log(caches.open("http://192.168.1.15:3000"))
+        // console.log(caches.open("http://192.168.1.12:3000"))
     }
 
     async walk(path) {
@@ -105,7 +105,7 @@ class Overview extends Component {
                             <div id={"back"} key={"item_back"} className="divBackItem">
                                 <div id={"back"} className="backItemIcon">
                                     <img id={"back"}
-                                         src={"http://192.168.1.15:3000/itemIcons/back.png"}
+                                         src={"http://192.168.1.12:3000/itemIcons/back.png"}
                                          alt={"GTFO with that alt bs"}/>
                                 </div>
                                 <div id={"back"} className="backItemFooter">
@@ -116,13 +116,13 @@ class Overview extends Component {
                         {
                             items.map((item, i) => {
                                 if (item.is_img) {
-                                    // return <img src={"http://192.168.1.15:5000/" + item.static_path}
+                                    // return <img src={"http://192.168.1.12:5000/" + item.static_path}
                                     //             id={item.global_path}
                                     //             key={i}/>
                                     return <ImageItem state={this.state} item={item} i={i}/>
                                 } else if (item.is_video) {
                                     // console.log(videoPath)
-                                    // return <ReactPlayer url={"http://192.168.1.15:5000/" + item.static_path} key={i}/>
+                                    // return <ReactPlayer url={"http://192.168.1.12:5000/" + item.static_path} key={i}/>
                                     return (
                                         // <video controls>
                                         //     <source src={videoPath} type="video/mp4" />
