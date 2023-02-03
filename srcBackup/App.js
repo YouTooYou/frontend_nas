@@ -83,13 +83,13 @@ class App extends Component {
                         {
                             items.map((item, i) => {
                                 if (item.is_img) {
-                                    // return <img src={"http://192.168.1.12:5000/" + item.static_path}
+                                    // return <img src={"http://192.168.1.13:5000/" + item.static_path}
                                     //             id={item.global_path}
                                     //             key={i}/>
                                     return <ImageItem item={item} i={i}/>
                                 } else if(item.is_video) {
                                     // console.log(videoPath)
-                                    // return <ReactPlayer url={"http://192.168.1.12:5000/" + item.static_path} key={i}/>
+                                    // return <ReactPlayer url={"http://192.168.1.13:5000/" + item.static_path} key={i}/>
                                     return (
                                         // <video controls>
                                         //     <source src={videoPath} type="video/mp4" />

@@ -8,8 +8,8 @@ class Item extends Component {
     }
 
     render() {
-        const filePath = "http://192.168.1.12:5000/" + this.props.item.static_path
-        const itemIcon = "http://192.168.1.12:3000/itemIcons/word.svg"
+        const filePath = "http://192.168.1.13:5000/" + this.props.item.static_path
+        const itemIcon = "http://192.168.1.13:3000/itemIcons/word.svg"
         return (
             <form action={filePath} class="formItem">
                 <button type="submit" class="pure-button buttonItem">

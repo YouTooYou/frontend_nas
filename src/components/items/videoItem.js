@@ -53,7 +53,7 @@ class VideoItem extends Component {
     }
 
     render() {
-        const itemIcon = "http://192.168.1.12:3000/itemIcons/video.svg"
+        const itemIcon = "http://192.168.1.13:3000/itemIcons/video.svg"
         const itemId = this.props.item.global_path
         return (
 
