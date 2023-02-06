@@ -64,14 +64,14 @@ class Overview extends Component {
             if ('caches' in window) {
                 // Opening given cache and putting our data into it
                 let cache = await caches.open(this.state.items[i].global_name)
-                await cache.put("http://192.168.1.13:3000", data);
+                await cache.put("http://localhost:3000", data);
             }
         }
 
         for (let i = 0; i < this.state.items.length; i++) {
             Cache().put(this.state.items[i].global_name,)
         }
-        // console.log(caches.open("http://192.168.1.13:3000"))
+        // console.log(caches.open("http://localhost:3000"))
     }
 
     async walk(path) {
@@ -97,7 +97,7 @@ class Overview extends Component {
         } else {
             return (
                 <>
-                    <div class="overviewContainer">
+                    <div className="overviewContainer">
                         <button id={"back"} className="pure-button buttonBackItem"
                                 onClick={async event => {
                                     await this.changePath(event)
@@ -105,7 +105,7 @@ class Overview extends Component {
                             <div id={"back"} key={"item_back"} className="divBackItem">
                                 <div id={"back"} className="backItemIcon">
                                     <img id={"back"}
-                                         src={"http://192.168.1.13:3000/itemIcons/back.png"}
+                                         src={"http://localhost:3000/itemIcons/back.png"}
                                          alt={"GTFO with that alt bs"}/>
                                 </div>
                                 <div id={"back"} className="backItemFooter">
@@ -116,13 +116,13 @@ class Overview extends Component {
                         {
                             items.map((item, i) => {
                                 if (item.is_img) {
-                                    // return <img src={"http://192.168.1.13:5000/" + item.static_path}
+                                    // return <img src={"http://localhost:5000/" + item.static_path}
                                     //             id={item.global_path}
                                     //             key={i}/>
-                                    return <ImageItem state={this.state} item={item} i={i}/>
+                                    return <ImageItem key={item.global_path + i} state={this.state} item={item} i={i}/>
                                 } else if (item.is_video) {
                                     // console.log(videoPath)
-                                    // return <ReactPlayer url={"http://192.168.1.13:5000/" + item.static_path} key={i}/>
+                                    // return <ReactPlayer url={"http://localhost:5000/" + item.static_path} key={i}/>
                                     return (
                                         // <video controls>
                                         //     <source src={videoPath} type="video/mp4" />
@@ -134,7 +134,7 @@ class Overview extends Component {
                                         //
                                         //     <a href={videoPath}>download video</a>
                                         // </video>
-                                        <VideoItem state={this.state} item={item} i={i}/>
+                                        <VideoItem key={item.global_path + i} state={this.state} item={item} i={i}/>
                                     )
                                 } else if (!item.is_dir) {
                                     return (
@@ -143,7 +143,7 @@ class Overview extends Component {
                                         // }}>
                                         //     <a id={ item.global_path } href={filePath} >{item.filename}</a>
                                         // </li>
-                                        <Item item={item} i={i}/>
+                                        <Item key={item.global_path + i} item={item} i={i}/>
                                     )
                                 } else {
                                     return (
@@ -152,9 +152,9 @@ class Overview extends Component {
                                         // }}>
                                         //     <a id={ item.global_path } >{item.filename}</a>
                                         // </li>
-                                        <div key={"divItem_" + i} class="clickDivItem"
+                                        <div key={"divItem_" + i} className="clickDivItem"
                                              onClick={async event => await this.changePath(event)}>
-                                            <DirItem item={item} i={i}/>
+                                            <DirItem key={item.global_path + i} item={item} i={i}/>
                                         </div>
                                     )
                                 }

@@ -53,17 +53,17 @@ class VideoItem extends Component {
     }
 
     render() {
-        const itemIcon = "http://192.168.1.13:3000/itemIcons/video.svg"
+        const itemIcon = "http://localhost:3000/itemIcons/video.svg"
         const itemId = this.props.item.global_path
         return (
 
-            <button onClick={async event => await this.movieTime(event)} class="pure-button buttonVideoItem">
+            <button id={itemId} onClick={async event => await this.movieTime(event)} className="pure-button buttonVideoItem">
                 <div id={itemId} key={"videoItem_" + this.props.i}
-                     class="divVideoItem">
-                    <div id={itemId} class="videoItemIcon">
+                     className="divVideoItem">
+                    <div id={itemId} className="videoItemIcon">
                         <img id={itemId} src={itemIcon} alt={"just look bro "}/>
                     </div>
-                    <div id={itemId} class="videoItemFooter">
+                    <div id={itemId} className="videoItemFooter">
                         {/*TODO add typography of hoe tf da ook heet */}
                         <a id={itemId}>{this.props.item.filename}</a>
                     </div>

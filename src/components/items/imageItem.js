@@ -17,6 +17,15 @@ class ImageItem extends Component {
         // Cache setup
         const items = [...this.props.state.items]
         let activeItem = items.filter(item => item.global_path === event.target.id)[0]
+        let filteredItems = items.filter(item => item.global_path === event.target.id)
+        console.log("activeItem")
+        console.log(activeItem)
+        console.log("filteredItems")
+        console.log(filteredItems)
+        console.log("items")
+        console.log(items)
+        console.log("event.target.id")
+        console.log(event.target.id)
 
         // Gathering all media items in current folder and Filling up cache
         await fetcher("POST", "/media_items", {path: this.props.state.path, "activeItem.global_path": activeItem.global_path}).then(response => response.json())
@@ -45,20 +54,24 @@ class ImageItem extends Component {
             this.props.mediaViewer.setCacheState()
             // this.props.mediaScroller.setCacheState()
             // this.props.videoDetail.setCacheState()
+        } else {
+            // Navigate to route using wrapper method
+            this.props.navigate("/item")
         }
     }
 
     render() {
-        const src = "http://192.168.1.13:5000/" + this.props.item.static_path
+        const src = "http://localhost:5000/" + this.props.item.static_path
+        const itemId = this.props.item.global_path
         return (
-            <button onClick={async event => await this.movieTime(event)} className="pure-button buttonImageItem">
-                <div class="divImageItem">
-                    <div class="itemIcon">
-                        <img src={src} id={this.props.item.global_path}
+            <button id={itemId} onClick={async event => await this.movieTime(event)} className="pure-button buttonImageItem">
+                <div id={itemId} className="divImageItem">
+                    <div id={itemId} className="itemIcon">
+                        <img src={src} id={itemId}
                              key={"imageItem_" + this.props.i} alt={"wish you could see this, right -_-"}/>
                     </div>
-                    <div class="itemFooter">
-                        <a id={this.props.item.global_path}>{this.props.item.filename}</a>
+                    <div id={itemId} className="itemFooter">
+                        <a id={itemId}>{this.props.item.filename}</a>
                     </div>
                 </div>
             </button>

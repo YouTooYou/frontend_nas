@@ -1,10 +1,7 @@
 .mediaScroller {
-  width: 100vw;
   overflow: auto;
   display: flex;
   flex-wrap: nowrap;
-  position: absolute;
-  bottom: 0;
 }
 .mediaScroller .buttonImageItem {
   width: 18vw;
@@ -29,6 +26,23 @@
 }
 .mediaScroller .buttonVideoItem .divVideoItem .videoItemIcon img {
   width: 6vw;
+}
+.mediaScrollerDivWrapper {
+  display: grid;
+  grid-template-columns: auto;
+  position: absolute;
+  bottom: 0;
+}
+
+.mediaScrollerButton {
+  position: absolute;
+  bottom: 14vw;
+  cursor: pointer;
+  float: left;
+  border: #282c34 3px solid;
+  border-radius: 50%;
+  height: 100px;
+  width: 100px;
 }
 
 /*# sourceMappingURL=mediaScroller.css.map */

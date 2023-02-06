@@ -6,15 +6,15 @@ class DirItem extends Component {
     }
 
     render() {
-        const itemIcon = "http://192.168.1.13:3000/itemIcons/directory.svg"
+        const itemIcon = "http://localhost:3000/itemIcons/directory.svg"
         const itemId = this.props.item.global_path
         return (
-            <button type="submit" class="pure-button buttonDirItem">
-                <div id={itemId} key={"dirItem_" + this.props.i} class="divDirItem">
-                    <div id={itemId} class="dirItemIcon">
+            <button type="submit" className="pure-button buttonDirItem">
+                <div id={itemId} key={"dirItem_" + this.props.i} className="divDirItem">
+                    <div id={itemId} className="dirItemIcon">
                         <img id={itemId} src={itemIcon} alt={"just look bro "}/>
                     </div>
-                    <div id={itemId} class="dirItemFooter">
+                    <div id={itemId} className="dirItemFooter">
                         {/*TODO add typography of hoe tf da ook heet */}
                         <a id={itemId}>{this.props.item.filename}</a>
                     </div>

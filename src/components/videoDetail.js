@@ -57,7 +57,7 @@ class VideoDetail extends Component {
         // console.log("this.props")
         // console.log(this.props.state.activeItem.static_path)
 
-        const videoPath = "http://192.168.1.13:5000/" + this.props.state.activeItem.static_path
+        const videoPath = "http://localhost:5000/" + this.props.state.activeItem.static_path
         // console.log("videoPath")
         // console.log(videoPath)
         return (
@@ -69,7 +69,7 @@ class VideoDetail extends Component {
                     <div id={"back"} key={"item_back"} className="divBackItem">
                         <div id={"back"} className="backItemIcon">
                             <img id={"back"}
-                                 src={"http://192.168.1.13:3000/itemIcons/back.png"}
+                                 src={"http://localhost:3000/itemIcons/back.png"}
                                  alt={"GTFO with that alt bs"}/>
                         </div>
                         <div id={"back"} className="backItemFooter">
@@ -79,7 +79,7 @@ class VideoDetail extends Component {
                 </button>
                 <div className="detailContainer">
 
-                    <video class="videoItem" src={videoPath} controls>
+                    <video className="videoItem" src={videoPath} controls>
                         <source type="video/mp4"/>
                         <source type="video/webm"/>
                         Your browser does not support the video tag

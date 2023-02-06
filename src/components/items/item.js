@@ -8,16 +8,16 @@ class Item extends Component {
     }
 
     render() {
-        const filePath = "http://192.168.1.13:5000/" + this.props.item.static_path
-        const itemIcon = "http://192.168.1.13:3000/itemIcons/word.svg"
+        const filePath = "http://localhost:5000/" + this.props.item.static_path
+        const itemIcon = "http://localhost:3000/itemIcons/word.svg"
         return (
-            <form action={filePath} class="formItem">
-                <button type="submit" class="pure-button buttonItem">
-                    <div key={"item_" + this.props.i} class="divItem">
-                        <div class="itemIcon">
+            <form action={filePath} className="formItem">
+                <button type="submit" className="pure-button buttonItem">
+                    <div key={"item_" + this.props.i} className="divItem">
+                        <div className="itemIcon">
                             <img src={itemIcon} alt={"holyyy fuck; fucjkoff already with this bssss"}/>
                         </div>
-                        <div class="itemFooter">
+                        <div className="itemFooter">
                             <a id={this.props.item.global_path}>{this.props.item.filename}</a>
                         </div>
                     </div>

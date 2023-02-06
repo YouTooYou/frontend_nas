@@ -1,6 +1,7 @@
 
 .detailContainer {
     display: flex;
+    //position: fixed;
     justify-content: center;
     flex-wrap: wrap;
     text-align: center;
@@ -29,7 +30,7 @@
         .backItemIcon {
 
             img {
-                // TODO je kan normaal met react of met scss of zo een div evengroot maken als een image; die scanned da zo snapje
+                // TODO je kan normaal met js/react of met scss of zo een div evengroot maken als een image; die scanned da zo snapje
                 width: 9em;
             }
         }
