@@ -31,6 +31,7 @@ class MediaViewer extends Component {
         const extra_state = {   mediaItems: cache.get("mediaItems"), activeItem: cache.get("activeItem")}
         let final_state = Object.assign({}, cache_state, extra_state)
 
+
         // console.log("cache_state")
         // console.log(cache_state)
         // console.log("extra_state")
