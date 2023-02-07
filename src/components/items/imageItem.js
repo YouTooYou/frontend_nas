@@ -61,7 +61,7 @@ class ImageItem extends Component {
     }
 
     render() {
-        const src = "http://localhost:5000/" + this.props.item.static_path
+        const src = "http://192.168.1.4:5000/" + this.props.item.static_path
         const itemId = this.props.item.global_path
         return (
             <button id={itemId} onClick={async event => await this.movieTime(event)} className="pure-button buttonImageItem">
