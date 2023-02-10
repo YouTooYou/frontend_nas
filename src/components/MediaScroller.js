@@ -10,6 +10,7 @@ import cache from "memory-cache";
 class MediaScroller extends Component {
     constructor(props) {
         super(props);
+
         this.state = Object.assign({}, props.state, {isVisible: false, position: 0})
     }
 
@@ -44,6 +45,7 @@ class MediaScroller extends Component {
     }
 
     render() {
+        const activeItem = this.state.activeItem
         if (this.state.isVisible) {
             return (
                 <>
@@ -54,16 +56,18 @@ class MediaScroller extends Component {
                         <div className="mediaScroller">
                             {
                                 this.state.mediaItems.map((item, i) => {
+                                    if(item.global_path === activeItem.global_path) return;
+
                                     if (item.is_img) {
                                         return <ImageItem className="mediaScrollerItem"
                                                           mediaViewer={this.props.mediaViewer}
                                                           state={this.state} item={item}
-                                                          i={i}/>
+                                                          i={i} key={"imageItem_" + i}/>
                                     } else if (item.is_video) {
                                         return <VideoItem className="mediaScrollerItem"
                                                           mediaViewer={this.props.mediaViewer}
                                                           state={this.state} item={item}
-                                                          i={i}/>
+                                                          i={i} key={"videoItem_" + i}/>
                                     } //else if() {
                                     else {
                                         return <h1> i got nofin bruv </h1>

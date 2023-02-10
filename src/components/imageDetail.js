@@ -8,9 +8,27 @@ let cache = require("memory-cache")
 class ImageDetail extends Component {
     constructor(props) {
         super(props);
-        this.state = this.props.state
-        console.log("this.state -> in ImageDetail:")
-        console.log(this.state)
+
+        // Finding current media position to allow leftOrRight 'ing
+        let mediaPosition = 0
+        // TODO put this in the activeItem through the server side
+        // FIXME put this in the activeItem through the server side
+        // TODO put this in the activeItem through the server side
+        // FIXME put this in the activeItem through the server side
+        // TODO put this in the activeItem through the server side
+        // FIXME put this in the activeItem through the server side
+        const items = props.state.items
+        const activeItem = props.state.activeItem
+
+        for (let i = 0; i < items.length; i++) {
+            if(items[i].global_path === activeItem.global_path) {
+                mediaPosition = i
+                break;
+            }
+        }
+
+        this.state = Object.assign({}, this.props.state, {mediaPosition: mediaPosition})
+
     }
 
 
@@ -42,10 +60,19 @@ class ImageDetail extends Component {
                     </div>
                 </button>
                 <div className="detailContainer">
-                    <img src={imagePath} key={imagePath} alt={"FUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUCK"}/>
+                    <img className="detailImage" onClick={event => this.nextOrBack(event)} src={imagePath} key={imagePath} alt={"FUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUCK"}/>
                 </div>
             </>
         );
+    }
+
+    nextOrBack(event) {
+        const isLeft = window.screen.width/2 > event.screenX
+        console.log("isLeft")
+        console.log(isLeft)
+        const cursor = isLeft ? this.state.mediaPosition - 1 : this.state.mediaPosition + 1
+        console.log("this.state.mediaItems[cursor]")
+        console.log(this.state.mediaItems[cursor])
     }
 }
 
