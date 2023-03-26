@@ -17,11 +17,9 @@ class ImageItem extends Component {
         // Cache setup
         const items = [...this.props.state.items]
         let activeItem = items.filter(item => item.global_path === event.target.id)[0]
-        let filteredItems = items.filter(item => item.global_path === event.target.id)
+        console.log("IMPORTANT 2.0")
         console.log("activeItem")
         console.log(activeItem)
-        console.log("filteredItems")
-        console.log(filteredItems)
         console.log("items")
         console.log(items)
         console.log("event.target.id")
@@ -31,6 +29,7 @@ class ImageItem extends Component {
         await fetcher("POST", "/media_items", {path: this.props.state.path, "activeItem.global_path": activeItem.global_path}).then(response => response.json())
             .then(mediaItems => {
                 // cache.put("items", items)
+                // activeItem.active_item = true
                 cache.del("activeItem")
                 cache.put("activeItem", activeItem)
                 // console.log("cache.get('activeItem')")

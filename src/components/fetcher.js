@@ -25,8 +25,7 @@ export async function fetcher(method, endpoint, body) {
         }
     }
 
-    let promise = await fetch(URL + endpoint, init)
-    return promise
+    return await fetch(URL + endpoint, init)
     // console.log(promise)
 }
 
