@@ -1,5 +1,5 @@
 
-const URL = "http://localhost:5000"
+const URL = "http://192.168.1.8:5000"
 export async function fetcher(method, endpoint, body) {
     if(!endpoint.startsWith("/")) {
         endpoint += "/"
@@ -25,8 +25,7 @@ export async function fetcher(method, endpoint, body) {
         }
     }
 
-    let promise = await fetch(URL + endpoint, init)
-    return promise
+    return await fetch(URL + endpoint, init)
     // console.log(promise)
 }
 

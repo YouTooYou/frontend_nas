@@ -11,7 +11,9 @@ class MediaScroller extends Component {
     constructor(props) {
         super(props);
 
-        this.state = Object.assign({}, props.state, {isVisible: false, position: 0})
+        this.updateCache = this.updateCache.bind(this)
+
+        this.state = Object.assign({}, props.state, {isVisible: false, position: 0, activeItem: cache.get("activeItem")})
     }
 
     handleScroll() {
@@ -21,6 +23,12 @@ class MediaScroller extends Component {
         console.log("position")
         console.log(position)
     };
+
+    updateCache(activeItem) {
+        cache.del("activeItem")
+        cache.put("activeItem", activeItem)
+        this.setState({activeItem: activeItem})
+    }
 
     componentDidMount() {
         if (this.state.isVisible) {
@@ -59,16 +67,24 @@ class MediaScroller extends Component {
                                     if(item.global_path === activeItem.global_path) return;
 
                                     if (item.is_img) {
-                                        return <ImageItem className="mediaScrollerItem"
-                                                          mediaViewer={this.props.mediaViewer}
-                                                          state={this.state} item={item}
-                                                          i={i} key={"imageItem_" + i}/>
+                                        return (
+                                            <div onClick={() => this.updateCache(item)}>
+                                                <ImageItem className="mediaScrollerItem"
+                                                           mediaViewer={this.props.mediaViewer}
+                                                           state={this.state} item={item}
+                                                           i={i} key={"imageItem_" + i}/>
+                                            </div>
+                                        )
                                     } else if (item.is_video) {
-                                        return <VideoItem className="mediaScrollerItem"
-                                                          mediaViewer={this.props.mediaViewer}
-                                                          state={this.state} item={item}
-                                                          i={i} key={"videoItem_" + i}/>
-                                    } //else if() {
+                                        return (
+                                            <div onClick={() => this.updateCache(item)}>
+                                                <VideoItem className="mediaScrollerItem"
+                                                           mediaViewer={this.props.mediaViewer}
+                                                           state={this.state} item={item}
+                                                           i={i} key={"videoItem_" + i}/>
+                                            </div>
+                                        )
+                                    }
                                     else {
                                         return <h1> i got nofin bruv </h1>
                                     }
