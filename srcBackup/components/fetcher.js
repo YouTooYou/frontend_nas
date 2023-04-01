@@ -1,5 +1,5 @@
 
-const URL = "http://192.168.1.4:5000"
+const URL = `http://${process.env.REACT_APP_IP_ADDRESS}:5000`
 export async function fetcher(method, endpoint, body) {
     if(!endpoint.startsWith("/")) {
         endpoint += "/"

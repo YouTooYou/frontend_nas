@@ -46,7 +46,7 @@ class ImageDetail extends Component {
     }
 
     render() {
-        const imagePath = "http://localhost:5000/" + this.props.state.activeItem.static_path
+        const imagePath = `http://${process.env.REACT_APP_IP_ADDRESS}:5000/` + this.props.state.activeItem.static_path
         return (
             <>
                 <div class="imageDetail-flex" onClick={async event => await this.movieTime(event)} >
@@ -57,7 +57,7 @@ class ImageDetail extends Component {
                         <div id={"back"} key={"item_back"} className="divBackItem">
                             <div id={"back"} className="backItemIcon">
                                 <img id={"back"}
-                                     src={"http://localhost:3000/itemIcons/back.png"}
+                                     src={`http://${process.env.REACT_APP_IP_ADDRESS}:3000/itemIcons/back.png`}
                                      alt={"GTFO with that alt bs"}/>
                             </div>
                             <div id={"back"} className="backItemFooter">
@@ -66,7 +66,7 @@ class ImageDetail extends Component {
                         </div>
                     </button>
                     <div className="detailContainer">
-                        <img className="detailImage" src={imagePath} key={imagePath} alt={"FUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUCK"}/>
+                        <img className="detailImage" style={{border: 1 + "px solid"}} src={imagePath} key={imagePath} alt={"FUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUCK"}/>
                     </div>
                 </div>
             </>
@@ -75,6 +75,9 @@ class ImageDetail extends Component {
 
     async movieTime(event) {
         console.log("movieTime() in ImageDetail")
+        console.log("event")
+        console.log(event.target.localName)
+        if(event.target.localName === "img") return;
 
         // console.log("activeItem")
         // console.log(activeItem)
