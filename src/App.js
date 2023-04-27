@@ -23,7 +23,7 @@ class App extends Component {
             isLoaded: false,
             items: [],
             images: [],
-            path: "/home/youss-taouil/Pictures/Screenshots",
+            path: `${process.env.REACT_APP_PATH}`,
             // Execute next line when we are on the video detail route; that is if and only
             // if the route accepts a param, not sure yet; but i'll find out tomorrow :)
             video: (globalPath) => this.state.items.filter(item => item.global_path === globalPath)[0],
